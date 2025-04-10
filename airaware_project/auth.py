@@ -33,11 +33,8 @@ class Token(BaseModel):
     token_type: str
 
 
-
 class Token_data(BaseModel):
     email: str | None = None
-
-
 
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -83,8 +80,6 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
     
-
-
 
 
 def get_current_user(token: Annotated[str, Depends(oauth2_schema)], db: db_dependency):

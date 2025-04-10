@@ -46,14 +46,15 @@ class UserCrud:
         return db.query(User).all()
 
 
-
     @staticmethod
     def get_users(db: Session, user_id: str):
         return db.get(User, user_id)
+    
 
     @staticmethod
     def get_user_by_username(db: Session, username: str):
         return db.query(User).filter(User.username == username).first()
+    
         
     @staticmethod
     def get_user_by_email(db: Session, email: str):
@@ -72,6 +73,7 @@ class UserCrud:
          db.commit()
          db.refresh(db_user)
          return db_user
+     
     
     @staticmethod
     def update_password(db: Session, user_id: str, new_password: str):
@@ -82,6 +84,8 @@ class UserCrud:
             db.refresh(db_user)
 
         return db_user
+    
+    
     @staticmethod
     def delete_user(db: Session, user_id: str):
         db_user = db.get(User, user_id)
