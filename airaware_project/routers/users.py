@@ -63,7 +63,6 @@ def update_user(user_id: str, update_user: UserUpdate, db: db_dependency):
             status_code=status.HTTP_404_NOT_FOUND,
             detail="User not found"
         )
-    
     return update_user
 
 
