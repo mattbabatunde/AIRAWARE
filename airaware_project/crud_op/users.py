@@ -37,7 +37,6 @@ class UserCrud:
                 raise HTTPException(status_code=400, detail="Email already exists")
             else:
                raise HTTPException(status_code=400, detail="Invalid input")
-
         return db_user
     
 
@@ -82,7 +81,6 @@ class UserCrud:
             db_user.hashed_password = get_pwd_hash(new_password)
             db.commit()
             db.refresh(db_user)
-
         return db_user
     
     
